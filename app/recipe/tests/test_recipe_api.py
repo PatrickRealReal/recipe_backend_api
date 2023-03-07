@@ -2,10 +2,10 @@
 Tests for recipe APIs.
 """
 from decimal import Decimal
-import tempfile
-import os
+# import tempfile
+# import os
 
-from PIL import Image
+# from PIL import Image
 
 from django.contrib.auth import get_user_model
 from django.test import TestCase
@@ -16,8 +16,8 @@ from rest_framework.test import APIClient
 
 from core.models import (
     Recipe,
-    Tag,
-    Ingredient,
+    # Tag,
+    # Ingredient,
 )
 
 from recipe.serializers import (
@@ -100,9 +100,12 @@ class PrivateRecipeApiTests(TestCase):
 
         res = self.client.get(RECIPES_URL)
 
-        recipes = Recipe.objects.filter(user=self.user)
-        serializer = RecipeSerializer(recipes, many=True)
-        self.assertEqual(res.status_code, status.HTTP_200_OK)
+        url = detail_url(recipe.id)
+        res = self.client.get(url)
+
+        # recipes = Recipe.objects.filter(user=self.user)
+        serializer = RecipeDetailSerializer(recipe)
+        # self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, serializer.data)
 
     def test_get_recipe_detail(self):
