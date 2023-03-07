@@ -47,4 +47,4 @@ class UserAdmin(BaseUserAdmin):
 admin.site.register(models.User, UserAdmin)
 admin.site.register(models.Recipe)
 admin.site.register(models.Tag) # Make sure this new tag can be manageable through Django Interface
-# admin.site.register(models.Ingredient)
+admin.site.register(models.Ingredient) # Make sure we can change it in the Django interface

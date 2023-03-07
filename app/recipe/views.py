@@ -21,7 +21,7 @@ from rest_framework.permissions import IsAuthenticated
 from core.models import (
     Recipe,
     Tag,
-    # Ingredient,
+    Ingredient,
 )
 from recipe import serializers
 
@@ -107,6 +107,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
 #         ]
 #     )
 # )
+# The following code do the refactoring
 class BaseRecipeAttrViewSet(mixins.DestroyModelMixin,
                             mixins.UpdateModelMixin,
                             mixins.ListModelMixin,
@@ -135,8 +136,7 @@ class TagViewSet(BaseRecipeAttrViewSet):
     queryset = Tag.objects.all()
 
 
-# class IngredientViewSet(BaseRecipeAttrViewSet):
-#     """Manage ingredients in the database."""
-#     serializer_class = serializers.IngredientSerializer
-#     queryset = Ingredient.objects.all()
-# Footer
+class IngredientViewSet(BaseRecipeAttrViewSet):
+    """Manage ingredients in the database."""
+    serializer_class = serializers.IngredientSerializer
+    queryset = Ingredient.objects.all()
