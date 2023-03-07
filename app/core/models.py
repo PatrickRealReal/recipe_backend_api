@@ -1,5 +1,5 @@
 """
-Database models.
+Database models. Store the tables which corresponds to the database.
 """
 import uuid
 import os
