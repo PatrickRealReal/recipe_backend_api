@@ -12,7 +12,7 @@ from rest_framework.test import APIClient
 
 from core.models import (
     Tag,
-    Recipe,
+    # Recipe,
 )
 
 from recipe.serializers import TagSerializer
